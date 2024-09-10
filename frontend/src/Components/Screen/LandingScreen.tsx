@@ -17,7 +17,7 @@ const LandingScreen: React.FC = () => {
         {/* Placeholder for the image */}
         <img
           className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain mb-5"
-          src="../loadingç.jpg" // Update this path accordingly
+          src="../loading.jpg" // Update this path accordingly
           alt="Internship"
         />
 
