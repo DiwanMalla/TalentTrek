@@ -1,8 +1,8 @@
 // ServicesScreen.tsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
-import { FaArrowLeft } from "react-icons/fa";
+
 import Header from "../../../Home/Header/Header";
 
 type Service = {
@@ -39,8 +39,6 @@ const services: Service[] = [
 ];
 
 const ServicesScreen: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <Header />

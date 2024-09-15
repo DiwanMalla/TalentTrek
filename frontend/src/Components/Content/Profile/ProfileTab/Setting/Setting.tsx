@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { ProfileContext } from "../../Edit/ProfileContext";
 import ChangePasswordModal from "./ChangePasswordModal";
-import { useNavigate } from "react-router-dom";
+
 import { Switch } from "@headlessui/react";
 import Header from "../../../Home/Header/Header";
 
@@ -14,7 +14,6 @@ const SettingsScreen = () => {
   const [isNotificationsEnabled, setNotificationsEnabled] = useState(true);
   const [newProfileName, setNewProfileName] = useState(""); // State for new profile name
   const { profileName, setProfileName } = useContext(ProfileContext);
-  const navigate = useNavigate();
 
   // Pre-fill the profile name in the Edit Profile modal
   useState(() => {
