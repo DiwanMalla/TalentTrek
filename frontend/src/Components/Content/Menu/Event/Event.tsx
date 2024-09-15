@@ -50,7 +50,7 @@ const initialEvents: Event[] = [
 ];
 
 const EventsScreen: React.FC = () => {
-  const [events, setEvents] = useState<Event[]>(initialEvents);
+  const [events] = useState<Event[]>(initialEvents);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleNotificationPress = () => {

@@ -18,7 +18,7 @@ const SettingsScreen = () => {
   // Pre-fill the profile name in the Edit Profile modal
   useState(() => {
     setNewProfileName(profileName);
-  }, [profileName]);
+  });
 
   const handleSavePassword = (newPassword: string, confirmPassword: string) => {
     if (newPassword === confirmPassword) {
