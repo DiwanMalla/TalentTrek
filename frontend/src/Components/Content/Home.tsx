@@ -12,6 +12,9 @@ import Header from "./Home/Header/Header";
 import HighlightedEvent from "./Home/HighlightedEvent/HighlightedEvent";
 import Internships from "./Home/Internship/Internship";
 import NewInternship from "./Home/Internship/New Internship/NewIntership";
+import Testimonials from "./Home/Testinomials/Testinomials";
+import PartnersAndSocial from "./Home/Partner&Social/Partner&Social";
+import PromotionBanner from "./Home/Promotion Banner/PromotionBanner";
 
 const HomeScreen: React.FC = () => {
   return (
@@ -24,13 +27,9 @@ const HomeScreen: React.FC = () => {
       />
       <Internships />
       <NewInternship />
-      {/* 
-      <HighlightedEvent />
-      <PromotionBanner />
-      <Internships />
-      <NewInternship />
       <Testimonials />
-      <PartnersAndSocial />  */}
+      <PartnersAndSocial />
+      <PromotionBanner />
     </div>
   );
 };

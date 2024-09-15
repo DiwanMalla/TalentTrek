@@ -1,9 +1,32 @@
 import React, { useContext, useState } from "react";
 import { ProfileContext } from "../../Profile/Edit/ProfileContext";
-import { IoMenu, IoClose, IoSettings, IoLogOut } from "react-icons/io5";
+import {
+  IoMenu,
+  IoClose,
+  IoSettings,
+  IoInformationCircleOutline,
+  IoCallOutline,
+  IoHelpCircle,
+  IoCardOutline,
+  IoBriefcaseOutline,
+  IoClipboardOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import "./Header.css"; // Import your CSS file with animations
+
+// Define profile options
+const profileOptions = [
+  { id: "1", label: "Settings", icon: <IoSettings /> },
+  { id: "2", label: "Portfolio Build", icon: <IoClipboardOutline /> },
+  { id: "3", label: "Membership", icon: <IoCardOutline /> },
+  { id: "4", label: "Services", icon: <IoBriefcaseOutline /> },
+  { id: "5", label: "About Us", icon: <IoInformationCircleOutline /> },
+  { id: "6", label: "Contact Us", icon: <IoCallOutline /> },
+  { id: "7", label: "Help & Support", icon: <IoHelpCircle /> },
+  { id: "8", label: "Log out", icon: <IoLogOutOutline /> },
+];
 
 const Header: React.FC = () => {
   const { profileName } = useContext(ProfileContext);
@@ -73,11 +96,6 @@ const Header: React.FC = () => {
           label="Events"
           isActive={location.pathname === "/events"}
         />
-        <NavLink
-          to="/profile"
-          label="Profile"
-          isActive={location.pathname === "/profile"}
-        />
       </nav>
 
       {/* Mobile Menu Button */}
@@ -98,7 +116,7 @@ const Header: React.FC = () => {
           <span className="ml-2 font-semibold">{profileName}</span>
         </div>
         {profileDropdown && (
-          <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-lg fade-in">
+          <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-lg fade-in z-50">
             <div className="p-2">
               <span className="block text-sm font-bold">{profileName}</span>
               <span className="block text-xs text-gray-500">
@@ -106,18 +124,19 @@ const Header: React.FC = () => {
               </span>
             </div>
             <hr />
-            <Link
-              to="/settings"
-              className="flex items-center p-2 hover:bg-gray-100 transition"
-            >
-              <IoSettings className="mr-2" /> Settings
-            </Link>
-            <Link
-              to="/logout"
-              className="flex items-center p-2 hover:bg-gray-100 transition"
-            >
-              <IoLogOut className="mr-2" /> Logout
-            </Link>
+            {profileOptions.map((option) => (
+              <Link
+                key={option.id}
+                to={`/${option.label.replace(/\s+/g, "-").toLowerCase()}`}
+                className="flex items-center p-2 hover:bg-gray-100 transition"
+                onClick={() =>
+                  option.label === "Log out" && navigate("/logout")
+                }
+              >
+                {option.icon}
+                <span className="ml-2">{option.label}</span>
+              </Link>
+            ))}
           </div>
         )}
       </div>
