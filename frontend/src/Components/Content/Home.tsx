@@ -9,11 +9,21 @@ import React from "react";
 // import PartnersAndSocial from "./HomeScreen/PartnersAndSocial/PartnersAndSocial";
 
 import Header from "./Home/Header/Header";
+import HighlightedEvent from "./Home/HighlightedEvent/HighlightedEvent";
+import Internships from "./Home/Internship/Internship";
+import NewInternship from "./Home/Internship/New Internship/NewIntership";
 
 const HomeScreen: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen px-">
       <Header />
+      <HighlightedEvent
+        title="Career Conference"
+        subtitle="Treat yourself with knowledge"
+        imageUrl="/Event/1.png"
+      />
+      <Internships />
+      <NewInternship />
       {/* 
       <HighlightedEvent />
       <PromotionBanner />

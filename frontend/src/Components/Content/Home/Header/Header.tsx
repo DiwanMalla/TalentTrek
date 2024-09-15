@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { ProfileContext } from "../../Profile/Edit/ProfileContext";
 import { IoMenu, IoClose, IoSettings, IoLogOut } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import "./Header.css"; // Import your CSS file with animations
 
@@ -9,10 +9,18 @@ const Header: React.FC = () => {
   const { profileName } = useContext(ProfileContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleProfileDropdown = () => setProfileDropdown(!profileDropdown);
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search-results?query=${searchQuery}`);
+    }
+  };
 
   return (
     <header className="bg-blue-800 text-white p-4 flex justify-between items-center relative">
@@ -31,11 +39,14 @@ const Header: React.FC = () => {
           <input
             type="text"
             placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full py-2 px-4 pl-10 rounded-lg border border-gray-300 bg-white text-gray-800 placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
           />
           <FaSearch
-            className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
+            className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 cursor-pointer"
             size={20}
+            onClick={handleSearch}
           />
         </div>
       </div>
@@ -48,9 +59,14 @@ const Header: React.FC = () => {
           isActive={location.pathname === "/home"}
         />
         <NavLink
-          to="/internships"
-          label="Internships"
-          isActive={location.pathname === "/internships"}
+          to="/recommended-job"
+          label="Recommend"
+          isActive={location.pathname === "/recommended-job"}
+        />
+        <NavLink
+          to="/my-jobs"
+          label="My Jobs"
+          isActive={location.pathname === "/my-jobs"}
         />
         <NavLink
           to="/events"
