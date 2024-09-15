@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -30,7 +31,7 @@ const SearchResult: React.FC = () => {
 
     // Randomly add the ad card in the data
     const adPosition = Math.floor(Math.random() * items.length);
-    items.splice(adPosition, 0, { type: "ad" });
+    items.splice(adPosition, 0);
 
     return items;
   };
