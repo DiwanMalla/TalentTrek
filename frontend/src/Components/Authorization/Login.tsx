@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     if (username === "guest" && password === "guest123") {
       // Navigate to the next screen or show success message
       alert("Login Successful. Welcome back, guest!");
-      navigate("/main-app"); // Redirect to the main app
+      navigate("/home"); // Redirect to the main app
     } else {
       // Show error message
       alert("Login Failed. Incorrect username or password.");
@@ -65,7 +65,7 @@ const Login: React.FC = () => {
       <p className="text-center text-gray-600 mt-6">
         Don't have an account?{" "}
         <a
-          onClick={() => navigate("/sign-up")}
+          onClick={() => navigate("/signup")}
           className="text-green-600 hover:underline cursor-pointer"
         >
           Sign Up

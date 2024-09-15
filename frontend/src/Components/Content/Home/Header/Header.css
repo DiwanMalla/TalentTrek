@@ -1,0 +1,29 @@
+/* styles.css */
+@keyframes borderSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.border-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-slide::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  animation: borderSlide 2s infinite linear;
+}
+
+.border-slide.active::before {
+  left: 0;
+}
