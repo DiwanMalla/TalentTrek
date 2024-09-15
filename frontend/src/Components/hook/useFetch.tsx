@@ -1,10 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFetch = (endpoint, query) => {
-  const [data, setData] = useState([]);
+interface Internship {
+  job_description: any;
+  job_highlights: any;
+  id: string;
+  job_title: string;
+  employer_name: string;
+  job_city: string;
+  job_offer_expiration_datetime_utc: string;
+  employer_logo?: string;
+  job_id: string;
+}
+const useFetch = (
+  endpoint: string,
+  query: { query?: string; num_pages?: number; page?: number; job_id?: string }
+) => {
+  const [data, setData] = useState<Internship[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   const options = {
     method: "GET",
@@ -24,7 +39,8 @@ const useFetch = (endpoint, query) => {
 
       setData(response.data.data);
       setIsLoading(false);
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       setError(error);
 
       console.log(error);

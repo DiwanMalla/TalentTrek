@@ -19,8 +19,13 @@ const InternshipItem: React.FC<InternshipItemProps> = ({ item }) => {
 
   // Function to format date
   const formatDate = (dateString: string | number | Date) => {
-    const options = { day: "numeric", month: "short", year: "numeric" };
+    const options: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    };
     const date = new Date(dateString);
+
     return date.toLocaleDateString("en-US", options);
   };
 

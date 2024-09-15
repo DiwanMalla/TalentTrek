@@ -25,7 +25,9 @@ const InternshipDetails: React.FC = () => {
   } = location.state as InternshipDetailsProps;
 
   const [activeTab, setActiveTab] = useState("Descriptions");
-  const { data, isLoading, error } = useFetch("job-details", { job_id: id });
+  const { data, isLoading, error } = useFetch("job-details", {
+    job_id: id,
+  });
 
   const jobHighlights = data[0]?.job_highlights;
   const jobDescription = data[0]?.job_description;
@@ -121,9 +123,14 @@ const InternshipDetails: React.FC = () => {
 };
 
 // Utility function to format date
-const formatDate = (dateString: string) => {
-  const options = { day: "numeric", month: "short", year: "numeric" };
+const formatDate = (dateString: string | number | Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  };
   const date = new Date(dateString);
+
   return date.toLocaleDateString("en-US", options);
 };
 
