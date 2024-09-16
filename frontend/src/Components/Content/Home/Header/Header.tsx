@@ -47,8 +47,8 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-blue-800 text-white p-4 flex justify-between items-center relative">
-      {/* Logo */}
-      <div className="flex items-center">
+      {/* Logo - hidden on mobile */}
+      <div className="hidden md:flex items-center">
         <img
           src="/logo.jpeg"
           alt="Logo"
@@ -56,8 +56,8 @@ const Header: React.FC = () => {
         />
       </div>
 
-      {/* Search Bar */}
-      <div className="hidden md:flex flex-grow justify-end mx-4 max-w-md">
+      {/* Search Bar - Visible on both mobile and desktop */}
+      <div className="flex flex-grow justify-center mx-4 max-w-md">
         <div className="relative w-full">
           <input
             type="text"
@@ -113,7 +113,9 @@ const Header: React.FC = () => {
             src="/profile.png"
             className="w-10 h-10 rounded-full object-cover border-2 border-white"
           />
-          <span className="ml-2 font-semibold">{profileName}</span>
+          <span className="ml-2 font-semibold hidden md:inline">
+            {profileName}
+          </span>
         </div>
         {profileDropdown && (
           <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-lg fade-in z-50">
@@ -153,19 +155,19 @@ const Header: React.FC = () => {
           isActive={location.pathname === "/home"}
         />
         <MobileMenuLink
-          to="/internships"
-          label="Internships"
-          isActive={location.pathname === "/internships"}
+          to="/recommended-job"
+          label="Recommend"
+          isActive={location.pathname === "/recommended-job"}
+        />
+        <MobileMenuLink
+          to="/my-jobs"
+          label="My Jobs"
+          isActive={location.pathname === "/my-jobs"}
         />
         <MobileMenuLink
           to="/events"
           label="Events"
           isActive={location.pathname === "/events"}
-        />
-        <MobileMenuLink
-          to="/profile"
-          label="Profile"
-          isActive={location.pathname === "/profile"}
         />
       </nav>
     </header>
