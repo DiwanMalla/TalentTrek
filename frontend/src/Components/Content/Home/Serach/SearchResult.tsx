@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -6,6 +5,22 @@ import InternshipItem from "../Internship/InternshipItem";
 import useFetch from "../../../hook/useFetch";
 import CustomAdCard from "./CustomAdCard";
 import Header from "../Header/Header";
+
+// Define the types for Internship and Ad
+interface InternshipItemProps {
+  job_title: string;
+  employer_name: string;
+  job_city: string;
+  job_offer_expiration_datetime_utc: string;
+  employer_logo?: string;
+  job_id: string;
+}
+
+interface Ad {
+  type: "ad";
+}
+
+type Item = InternshipItemProps | Ad;
 
 const SearchResult: React.FC = () => {
   // Get the search query from the URL
@@ -27,17 +42,17 @@ const SearchResult: React.FC = () => {
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    let items = data.slice(startIndex, endIndex);
+    let items: Item[] = data.slice(startIndex, endIndex);
 
     // Randomly add the ad card in the data
     const adPosition = Math.floor(Math.random() * items.length);
-    items.splice(adPosition, 0);
+    items.splice(adPosition, 0, { type: "ad" });
 
     return items;
   };
 
-  const renderItem = (item: any) => {
-    if (item.type === "ad") {
+  const renderItem = (item: Item) => {
+    if ("type" in item && item.type === "ad") {
       return (
         <CustomAdCard
           imageUrl="https://img.youtube.com/vi/R4em3LKQCAQ/default.jpg"
@@ -47,7 +62,7 @@ const SearchResult: React.FC = () => {
         />
       );
     }
-    return <InternshipItem item={item} />;
+    return <InternshipItem item={item as InternshipItemProps} />;
   };
 
   if (isLoading) {

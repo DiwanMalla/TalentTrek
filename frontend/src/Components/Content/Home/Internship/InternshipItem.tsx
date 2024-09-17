@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
@@ -12,7 +13,11 @@ interface InternshipItemProps {
     job_id: string;
   };
 }
+interface Ad {
+  type: "ad";
+}
 
+type Item = InternshipItemProps | Ad;
 const InternshipItem: React.FC<InternshipItemProps> = ({ item }) => {
   const navigate = useNavigate();
   const [imageError, setImageError] = React.useState(false);
