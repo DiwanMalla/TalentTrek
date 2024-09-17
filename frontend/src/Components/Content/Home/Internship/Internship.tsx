@@ -26,7 +26,7 @@ const Internships: React.FC = () => {
     return (
       <div className="flex items-center justify-center h-full p-4">
         <p className="text-red-600 text-lg font-semibold">
-          Failed to load jobs.{error}
+          Failed to load jobs.{error} Update Rapid api
         </p>
       </div>
     );
