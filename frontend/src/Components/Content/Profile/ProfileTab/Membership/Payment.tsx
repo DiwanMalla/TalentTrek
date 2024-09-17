@@ -32,7 +32,7 @@ const PaymentScreen: React.FC = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer A21AAJvtzTSmSnpabHGGNuw7ls7uN6jPf7TYvgjyTsP1YdhHsFG8bWFO1lEdZkWZpvdyfeucliZDDt1BN3S5J7-va7B-sNkBg`,
+          Authorization: `Bearer A21AAKXI8L9mXtgajdO-c-ggNmu2fcTrw-SjUdChV9uzA17SSflZ5MJAA_kJzajgTpf54_wCRhohJ9iekSTB8996eu9jiXZbQ`,
         },
         body: JSON.stringify({
           intent: "sale",
