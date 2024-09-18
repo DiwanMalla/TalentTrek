@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // PaymentScreen.tsx
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -32,7 +33,7 @@ const PaymentScreen: React.FC = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer A21AAKXI8L9mXtgajdO-c-ggNmu2fcTrw-SjUdChV9uzA17SSflZ5MJAA_kJzajgTpf54_wCRhohJ9iekSTB8996eu9jiXZbQ`,
+          Authorization: `Bearer A21AAJoEU9NrcJY5Rwp3Ru9w4FUL5udQ0bC5MMeau-HvbiTVx1NuG-IYAk_7U6RhlCRBg6r6QOEUQ9cloPn649-uBSWEf4Nzg`,
         },
         body: JSON.stringify({
           intent: "sale",
